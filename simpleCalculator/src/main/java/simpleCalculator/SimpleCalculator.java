@@ -16,38 +16,22 @@ public class SimpleCalculator {
             answer = simpleCalculator.getNumber("Please enter first number or quit to exit");
             if (!answer.equals("quit")) {
                 firstNumber = Double.parseDouble(answer);
+            }
+            if (!answer.equals("quit")) {
                 answer = simpleCalculator.getNumber("Please enter second number or quit to exit");
-                if (!answer.equals("quit")) {
-                    secondNumber = Double.parseDouble(answer);
-                    answer = simpleCalculator.getCalculationMethod();
-                    if (!answer.equals("quit")) {
-                        calculationMethod = answer;
-                        calculationResult=simpleCalculator.calculate(firstNumber, secondNumber,calculationMethod);
-                        System.out.println(firstNumber + " " + calculationMethod + " " + secondNumber + " = " + calculationResult);
-                    }
-                }
+            }
+            if (!answer.equals("quit")) {
+                secondNumber = Double.parseDouble(answer);
+            }
+            if (!answer.equals("quit")) {
+                answer = simpleCalculator.getCalculationMethod();
+            }
+            if (!answer.equals("quit")) {
+                calculationMethod = answer;
+                calculationResult = simpleCalculator.calculate(firstNumber, secondNumber, calculationMethod);
+                System.out.println(firstNumber + " " + calculationMethod + " " + secondNumber + " = " + calculationResult);
             }
         }
-    }
-
-    private double calculate(double firstNumber, double secondNumber, String calculationMethod) {
-        double calculationResult = 0;
-        switch (calculationMethod) {
-            case "+":
-                calculationResult = firstNumber + secondNumber;
-                break;
-            case "-":
-                calculationResult = firstNumber - secondNumber;
-                break;
-            case "*":
-                calculationResult = firstNumber * secondNumber;
-                break;
-            case "/":
-                //ToDo prevent division trough zero
-                calculationResult = firstNumber / secondNumber;
-                break;
-        }
-        return calculationResult;
     }
 
     public String getNumber(String message) {
@@ -74,6 +58,27 @@ public class SimpleCalculator {
             System.out.println("You entered " + input);
         }
         return input;
+    }
+
+    public double calculate(double firstNumber, double secondNumber, String calculationMethod) {
+        double calculationResult = 0;
+        switch (calculationMethod) {
+            case "+":
+                calculationResult = firstNumber + secondNumber;
+                break;
+            case "-":
+                calculationResult = firstNumber - secondNumber;
+                break;
+            case "*":
+                calculationResult = firstNumber * secondNumber;
+                break;
+            case "/":
+                //ToDo prevent division trough zero
+                calculationResult = firstNumber / secondNumber;
+                break;
+        }
+        return calculationResult;
+
     }
 
     public static boolean isNumeric(String strNum) {
