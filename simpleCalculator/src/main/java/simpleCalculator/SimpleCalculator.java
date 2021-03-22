@@ -22,26 +22,32 @@ public class SimpleCalculator {
                     answer = simpleCalculator.getCalculationMethod();
                     if (!answer.equals("quit")) {
                         calculationMethod = answer;
-                        switch (calculationMethod) {
-                            case "+":
-                                calculationResult = firstNumber + secondNumber;
-                                break;
-                            case "-":
-                                calculationResult = firstNumber - secondNumber;
-                                break;
-                            case "*":
-                                calculationResult = firstNumber * secondNumber;
-                                break;
-                            case "/":
-                                //ToDo prevent division trough zero
-                                calculationResult = firstNumber / secondNumber;
-                                break;
-                        }
+                        calculationResult=simpleCalculator.calculate(firstNumber, secondNumber,calculationMethod);
                         System.out.println(firstNumber + " " + calculationMethod + " " + secondNumber + " = " + calculationResult);
                     }
                 }
             }
         }
+    }
+
+    private double calculate(double firstNumber, double secondNumber, String calculationMethod) {
+        double calculationResult = 0;
+        switch (calculationMethod) {
+            case "+":
+                calculationResult = firstNumber + secondNumber;
+                break;
+            case "-":
+                calculationResult = firstNumber - secondNumber;
+                break;
+            case "*":
+                calculationResult = firstNumber * secondNumber;
+                break;
+            case "/":
+                //ToDo prevent division trough zero
+                calculationResult = firstNumber / secondNumber;
+                break;
+        }
+        return calculationResult;
     }
 
     public String getNumber(String message) {
